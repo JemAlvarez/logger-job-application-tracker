@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "jshelper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JemAlvarez/JsHelper",
+      "state" : {
+        "branch" : "master",
+        "revision" : "0f386b5d33ed9654d9ba66f8fba0e801d9e5c347"
+      }
+    }
+  ],
+  "version" : 2
+}
