@@ -102,17 +102,21 @@ extension ApplicationListView {
     }
 
     func list() -> some View {
-        List(viewModel.getApplications(applications)) { application in
-            ApplicationListRowView(application: application)
-                .swipeActions(allowsFullSwipe: true) {
-                    Button(action: {
-                        viewModel.delete(application)
-                    }) {
-                        Image(systemName: "trash.fill")
-                    }
-                    .tint(.red)
-                }
+        List(withAnimation { viewModel.getApplications(applications) }) { application in
+                listRow(application)
         }
+    }
+
+    func listRow(_ application: JobApplicationModel) -> some View {
+        ApplicationListRowView(application: application)
+            .swipeActions(allowsFullSwipe: true) {
+                Button(action: {
+                    viewModel.delete(application)
+                }) {
+                    Image(systemName: "trash.fill")
+                }
+                .tint(.red)
+            }
     }
 
     func bottomBar() -> some View {

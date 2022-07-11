@@ -53,13 +53,20 @@ struct SettingsView_Previews: PreviewProvider {
 extension SettingsView {
     func donate() -> some View {
         Section(content: {
-            makeRow(
-                leftImage: "heart.fill",
-                color: .red,
-                text: "Donate and support",
-                rightImage: nil
-            ) {
-                // TODO: Process IAP
+            HStack {
+                makeRow(
+                    leftImage: "heart.fill",
+                    color: .red,
+                    text: "Donate and support",
+                    rightImage: nil
+                ) {
+                    // TODO: Process IAP
+                }
+
+                Spacer()
+
+                Text("$0.99")
+                    .foregroundColor(.blue)
             }
         }) {
             Text("Support")

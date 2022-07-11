@@ -33,7 +33,11 @@ struct JobApplicationModel: Identifiable {
         contacts: []
     )
 
-    enum Status: String, CaseIterable {
+    enum Status: String, CaseIterable, Comparable {
+        static func < (lhs: JobApplicationModel.Status, rhs: JobApplicationModel.Status) -> Bool {
+            return lhs.rawValue < rhs.rawValue
+        }
+
         case applied, rejected, offer, waiting, call, interview, none
 
         var color: Color {
