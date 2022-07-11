@@ -7,12 +7,9 @@ struct ApplicationListRowView: View {
     let application: JobApplicationModel
 
     var body: some View {
-        NavigationLink(destination: ApplicationEditorView(application: application)) {
+        NavigationLink(destination: ApplicationEditorView(application: application, isSheet: false)) {
             HStack {
-                Circle()
-                    .fill(application.color)
-                    .frame(width: 8, height: 8)
-                    .padding(.leading, -10)
+                StatusCircleView(color: application.status.color)
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text(application.companyName)

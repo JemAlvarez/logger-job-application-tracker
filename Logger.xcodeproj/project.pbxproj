@@ -14,6 +14,9 @@
 		CA55C724287A6BE800BF42FF /* JsHelper in Frameworks */ = {isa = PBXBuildFile; productRef = CA55C723287A6BE800BF42FF /* JsHelper */; };
 		CA55C726287A72A800BF42FF /* SortCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C725287A72A800BF42FF /* SortCategories.swift */; };
 		CA55C728287A753A00BF42FF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C727287A753A00BF42FF /* SettingsView.swift */; };
+		CA55C72A287B8F3000BF42FF /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C729287B8F3000BF42FF /* UserDefaultsExtensions.swift */; };
+		CA55C72C287B94BC00BF42FF /* StatusCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C72B287B94BC00BF42FF /* StatusCircleView.swift */; };
+		CABFD8C0287BB821005E6CFD /* ContactEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABFD8BF287BB821005E6CFD /* ContactEditView.swift */; };
 		CAD12FB0287A384200659BBC /* LoggerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD12FAF287A384200659BBC /* LoggerApp.swift */; };
 		CAD12FB2287A384200659BBC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD12FB1287A384200659BBC /* MainView.swift */; };
 		CAD12FB4287A384200659BBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAD12FB3287A384200659BBC /* Assets.xcassets */; };
@@ -32,6 +35,10 @@
 		CA55C720287A5C3D00BF42FF /* ApplicationEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationEditorViewModel.swift; sourceTree = "<group>"; };
 		CA55C725287A72A800BF42FF /* SortCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCategories.swift; sourceTree = "<group>"; };
 		CA55C727287A753A00BF42FF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CA55C729287B8F3000BF42FF /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
+		CA55C72B287B94BC00BF42FF /* StatusCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCircleView.swift; sourceTree = "<group>"; };
+		CABFD8BF287BB821005E6CFD /* ContactEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditView.swift; sourceTree = "<group>"; };
+		CABFD8C1287BC126005E6CFD /* Logger 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Logger 2.xcdatamodel"; sourceTree = "<group>"; };
 		CAD12FAC287A384200659BBC /* Logger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Logger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD12FAF287A384200659BBC /* LoggerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerApp.swift; sourceTree = "<group>"; };
 		CAD12FB1287A384200659BBC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -62,6 +69,7 @@
 				CAD12FCD287A497200659BBC /* ApplicationListView.swift */,
 				CA55C71A287A4F8400BF42FF /* ApplicationListRowView.swift */,
 				CA55C71E287A5C2800BF42FF /* ApplicationEditorView.swift */,
+				CABFD8BF287BB821005E6CFD /* ContactEditView.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -110,6 +118,7 @@
 				CA55C719287A4F6400BF42FF /* Application */,
 				CAD12FB1287A384200659BBC /* MainView.swift */,
 				CA55C727287A753A00BF42FF /* SettingsView.swift */,
+				CA55C72B287B94BC00BF42FF /* StatusCircleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -138,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				CA55C725287A72A800BF42FF /* SortCategories.swift */,
+				CA55C729287B8F3000BF42FF /* UserDefaultsExtensions.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -222,13 +232,16 @@
 				CAD12FCC287A40FF00659BBC /* JobApplicationModel.swift in Sources */,
 				CA55C71F287A5C2800BF42FF /* ApplicationEditorView.swift in Sources */,
 				CA55C721287A5C3D00BF42FF /* ApplicationEditorViewModel.swift in Sources */,
+				CA55C72A287B8F3000BF42FF /* UserDefaultsExtensions.swift in Sources */,
 				CA55C71B287A4F8400BF42FF /* ApplicationListRowView.swift in Sources */,
 				CAD12FB2287A384200659BBC /* MainView.swift in Sources */,
 				CAD12FB0287A384200659BBC /* LoggerApp.swift in Sources */,
+				CA55C72C287B94BC00BF42FF /* StatusCircleView.swift in Sources */,
 				CAD12FC8287A3D9200659BBC /* CoreDataManager.swift in Sources */,
 				CAD12FCA287A40EE00659BBC /* JobContactModel.swift in Sources */,
 				CA55C726287A72A800BF42FF /* SortCategories.swift in Sources */,
 				CAD12FC6287A39E100659BBC /* Logger.xcdatamodeld in Sources */,
+				CABFD8C0287BB821005E6CFD /* ContactEditView.swift in Sources */,
 				CA55C71D287A523500BF42FF /* ApplicationListViewModel.swift in Sources */,
 				CA55C728287A753A00BF42FF /* SettingsView.swift in Sources */,
 			);
@@ -461,6 +474,7 @@
 		CAD12FC4287A39E100659BBC /* Logger.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				CABFD8C1287BC126005E6CFD /* Logger 2.xcdatamodel */,
 				CAD12FC5287A39E100659BBC /* Logger.xcdatamodel */,
 			);
 			currentVersion = CAD12FC5287A39E100659BBC /* Logger.xcdatamodel */;

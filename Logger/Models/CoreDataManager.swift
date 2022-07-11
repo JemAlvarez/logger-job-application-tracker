@@ -34,8 +34,8 @@ class CoreDataManager: ObservableObject {
             jobTitle: jobApplication.jobTitle ?? "",
             location: jobApplication.location ?? "",
             notes: jobApplication.notes ?? "",
-            recruitingCompany: jobApplication.recruitingCompany,
-            salary: jobApplication.salary,
+            recruitingCompany: jobApplication.recruitingCompany ?? "",
+            salary: Int(jobApplication.salary),
             status: JobApplicationModel.Status.getStatus(from: jobApplication.status ?? ""),
             contacts: contacts
         )
@@ -47,7 +47,7 @@ class CoreDataManager: ObservableObject {
             CD_ID: jobContact.objectID,
             email: jobContact.email ?? "",
             name: jobContact.name ?? "",
-            number: Int(jobContact.number),
+            number: jobContact.number ?? "",
             role: JobContactModel.Role.getRole(from: jobContact.role ?? "")
         )
         return jobContactModel
@@ -63,7 +63,7 @@ class CoreDataManager: ObservableObject {
         jobApplication.location = applicationModel.location
         jobApplication.notes = applicationModel.notes
         jobApplication.recruitingCompany = applicationModel.recruitingCompany
-        jobApplication.salary = applicationModel.salary
+        jobApplication.salary = Int16(applicationModel.salary)
         jobApplication.status = applicationModel.status.rawValue
 
         for contact in applicationModel.contacts {
@@ -78,7 +78,7 @@ class CoreDataManager: ObservableObject {
     func createJobContact(with contactModel: JobContactModel, and application: JobApplication) -> JobContact {
         let jobContact = JobContact(context: container.viewContext)
         jobContact.email = contactModel.email
-        jobContact.number = Int16(contactModel.number)
+        jobContact.number = contactModel.number
         jobContact.name = contactModel.name
         jobContact.role = contactModel.role.rawValue
         jobContact.jobApplication = application
@@ -88,7 +88,7 @@ class CoreDataManager: ObservableObject {
     func updateJobContact(with contactModel: JobContactModel) -> JobContact? {
         if let id = contactModel.CD_ID, let contact = try? container.viewContext.existingObject(with: id) as? JobContact {
             contact.email = contactModel.email
-            contact.number = Int16(contactModel.number)
+            contact.number = contactModel.number
             contact.name = contactModel.name
             contact.role = contactModel.role.rawValue
             return contact
@@ -107,8 +107,29 @@ class CoreDataManager: ObservableObject {
             application.location = applicationModel.location
             application.notes = applicationModel.notes
             application.recruitingCompany = applicationModel.recruitingCompany
-            application.salary = applicationModel.salary
+            application.salary = Int16(applicationModel.salary)
             application.status = applicationModel.status.rawValue
+
+            for contact in applicationModel.contacts {
+                if let contacts = application.contacts {
+                    let exists = application.contacts?.contains(where: { jobContact in
+                        if let jobContact = jobContact as? JobContact {
+                            return contact.CD_ID == jobContact.objectID
+                        }
+                        return false
+                    })
+
+                    if let exists {
+                        if exists {
+                            let _ = updateJobContact(with: contact)
+                        } else {
+                            contacts.adding(createJobContact(with: contact, and: application))
+                        }
+                    }
+                } else {
+                    application.contacts = NSSet(object: createJobContact(with: contact, and: application))
+                }
+            }
         }
     }
 
@@ -116,10 +137,9 @@ class CoreDataManager: ObservableObject {
         try? container.viewContext.save()
     }
 
-    func deleteAndSave(with objectId: NSManagedObjectID) {
+    func delete(with objectId: NSManagedObjectID) {
         if let object = try? container.viewContext.existingObject(with: objectId) {
             container.viewContext.delete(object)
-            save()
         } else {
             print("Unable to find object with given ID")
         }

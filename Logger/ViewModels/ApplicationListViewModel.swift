@@ -28,7 +28,8 @@ class ApplicationListViewModel: ObservableObject {
     func delete(_ application: JobApplicationModel) {
         if let id = application.CD_ID {
             withAnimation {
-                coreDataManager.deleteAndSave(with: id)
+                coreDataManager.delete(with: id)
+                coreDataManager.save()
             }
         }
     }

@@ -24,7 +24,7 @@ struct ApplicationListView: View {
             .navigationTitle("Logger")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $viewModel.isSheetOpenForApplicationEdit) {
-                ApplicationEditorView(application: .empty)
+                ApplicationEditorView(application: .empty, isSheet: true)
                     .interactiveDismissDisabled()
             }
             .sheet(isPresented: $viewModel.isSheetOpenForSettings) { SettingsView() }
