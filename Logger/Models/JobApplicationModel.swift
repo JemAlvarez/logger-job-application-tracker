@@ -9,6 +9,7 @@ struct JobApplicationModel: Identifiable {
     let companyName: String
     let dateApplied: Date
     let dateModified: Date
+    let interviewDate: Date?
     let jobLink: String
     let jobTitle: String
     let location: String
@@ -23,6 +24,7 @@ struct JobApplicationModel: Identifiable {
         companyName: "",
         dateApplied: .now,
         dateModified: .now,
+        interviewDate: nil,
         jobLink: "",
         jobTitle: "",
         location: "",

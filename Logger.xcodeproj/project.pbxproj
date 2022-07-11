@@ -37,6 +37,7 @@
 		CA55C727287A753A00BF42FF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CA55C729287B8F3000BF42FF /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		CA55C72B287B94BC00BF42FF /* StatusCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCircleView.swift; sourceTree = "<group>"; };
+		CA824374287C8D3400F17207 /* Logger 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Logger 3.xcdatamodel"; sourceTree = "<group>"; };
 		CABFD8BF287BB821005E6CFD /* ContactEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditView.swift; sourceTree = "<group>"; };
 		CABFD8C1287BC126005E6CFD /* Logger 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Logger 2.xcdatamodel"; sourceTree = "<group>"; };
 		CAD12FAC287A384200659BBC /* Logger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Logger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -474,10 +475,11 @@
 		CAD12FC4287A39E100659BBC /* Logger.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				CA824374287C8D3400F17207 /* Logger 3.xcdatamodel */,
 				CABFD8C1287BC126005E6CFD /* Logger 2.xcdatamodel */,
 				CAD12FC5287A39E100659BBC /* Logger.xcdatamodel */,
 			);
-			currentVersion = CAD12FC5287A39E100659BBC /* Logger.xcdatamodel */;
+			currentVersion = CA824374287C8D3400F17207 /* Logger 3.xcdatamodel */;
 			path = Logger.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

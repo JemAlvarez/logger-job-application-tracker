@@ -9,7 +9,6 @@ struct StatusCircleView: View {
             Circle()
                 .fill(color)
                 .frame(width: 8, height: 8)
-                .padding(.leading, -10)
     }
 }
 

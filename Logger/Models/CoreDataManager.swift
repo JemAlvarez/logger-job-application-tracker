@@ -30,6 +30,7 @@ class CoreDataManager: ObservableObject {
             companyName: jobApplication.companyName ?? "",
             dateApplied: jobApplication.dateApplied ?? .now,
             dateModified: jobApplication.dateModified ?? .now,
+            interviewDate: jobApplication.interviewDate,
             jobLink: jobApplication.jobLink ?? "",
             jobTitle: jobApplication.jobTitle ?? "",
             location: jobApplication.location ?? "",
@@ -58,6 +59,7 @@ class CoreDataManager: ObservableObject {
         jobApplication.companyName = applicationModel.companyName
         jobApplication.dateApplied = applicationModel.dateApplied
         jobApplication.dateModified = applicationModel.dateModified
+        jobApplication.interviewDate = applicationModel.interviewDate
         jobApplication.jobLink = applicationModel.jobLink
         jobApplication.jobTitle = applicationModel.jobTitle
         jobApplication.location = applicationModel.location
@@ -102,6 +104,7 @@ class CoreDataManager: ObservableObject {
             application.companyName = applicationModel.companyName
             application.dateApplied = applicationModel.dateApplied
             application.dateModified = applicationModel.dateModified
+            application.interviewDate = applicationModel.interviewDate
             application.jobLink = applicationModel.jobLink
             application.jobTitle = applicationModel.jobTitle
             application.location = applicationModel.location

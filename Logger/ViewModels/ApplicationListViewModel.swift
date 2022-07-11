@@ -21,7 +21,6 @@ class ApplicationListViewModel: ObservableObject {
         }
 
         output = query(output)
-        print("================", output)
         output = filter(output)
         output = sort(output)
 

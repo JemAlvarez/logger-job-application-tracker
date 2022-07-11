@@ -42,7 +42,9 @@ struct ApplicationListView: View {
                     Menu {
                         ForEach(SortCategories.allCases, id: \.self.rawValue) { category in
                             Button(action: {
-                                viewModel.sorting = category
+                                withAnimation {
+                                    viewModel.sorting = category
+                                }
                             }) {
                                 if viewModel.sorting == category {
                                     Label(category.rawValue.capitalized, systemImage: "checkmark")
@@ -55,7 +57,9 @@ struct ApplicationListView: View {
                         Divider()
 
                         Button(action: {
-                            viewModel.descending.toggle()
+                            withAnimation {
+                                viewModel.descending.toggle()
+                            }
                         }) {
                             Label(viewModel.descending ? "Descending" : "Ascending", systemImage: "arrow.up.arrow.down")
                         }
@@ -68,12 +72,14 @@ struct ApplicationListView: View {
                     Menu {
                         ForEach(JobApplicationModel.Status.allCases, id: \.self.rawValue) { status in
                             Button(action: {
-                                viewModel.filtering = status
+                                withAnimation {
+                                    viewModel.filtering = status
+                                }
                             }) {
                                 if viewModel.filtering == status {
                                     Label(status.rawValue.capitalized, systemImage: "checkmark")
                                 } else {
-                                    Text(status.rawValue.capitalized)
+                                    Text(status == .none ? "All" : status.rawValue.capitalized)
                                 }
                             }
                         }
@@ -134,7 +140,7 @@ extension ApplicationListView {
                 }
             }
         }
-        .padding([.horizontal, .top])
+        .padding()
         .background(.ultraThinMaterial)
     }
 }

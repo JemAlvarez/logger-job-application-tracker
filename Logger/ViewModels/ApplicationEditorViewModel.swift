@@ -20,6 +20,8 @@ class ApplicationEditorViewModel: ObservableObject {
     @Published var date: Date = .now
 
     @Published var companyName = ""
+    @Published var hasInterviewDate = false
+    @Published var interviewDate: Date = .now
     @Published var jobTitle = ""
     @Published var location = ""
     @Published var salary: Int = 0
@@ -35,6 +37,10 @@ class ApplicationEditorViewModel: ObservableObject {
             status = application.status
             date = application.dateApplied
             companyName = application.companyName
+            hasInterviewDate = application.interviewDate == nil ? false : true
+            if let date = application.interviewDate {
+                interviewDate = date
+            }
             jobTitle = application.jobTitle
             location = application.location
             salary = application.salary
@@ -51,6 +57,7 @@ class ApplicationEditorViewModel: ObservableObject {
             companyName: companyName,
             dateApplied: date,
             dateModified: .now,
+            interviewDate: hasInterviewDate ? interviewDate : nil,
             jobLink: link,
             jobTitle: jobTitle,
             location: location,

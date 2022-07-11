@@ -97,6 +97,12 @@ extension ApplicationEditorView {
 
             TextField("Job title", text: $viewModel.jobTitle)
 
+            Toggle("Add interview date?", isOn: $viewModel.hasInterviewDate)
+
+            if viewModel.hasInterviewDate {
+                DatePicker("Interview date", selection: $viewModel.interviewDate, displayedComponents: .date)
+            }
+
             TextField("Location", text: $viewModel.location)
                 .textContentType(.location)
 

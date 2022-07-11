@@ -10,6 +10,7 @@ struct ApplicationListRowView: View {
         NavigationLink(destination: ApplicationEditorView(application: application, isSheet: false)) {
             HStack {
                 StatusCircleView(color: application.status.color)
+                    .padding(.leading, -10)
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text(application.companyName)
@@ -33,15 +34,25 @@ struct ApplicationListRowView: View {
                         .font(.subheadline)
 
                         Spacer()
-
-                        Text(application.dateApplied.getString(with: .comma))
-                            .font(.subheadline)
-                            .opacity(.opacityMedium)
                     }
                 }
                 .padding(.trailing)
-                .lineLimit(1)
+
+                Spacer()
+
+                VStack(alignment: .trailing, spacing: 8) {
+                    if let date = application.interviewDate {
+                        Text("Interview: \(date.getString(with: .comma))")
+                            .foregroundColor(JobApplicationModel.Status.interview.color)
+                    }
+
+                    Text("Applied: \(application.dateApplied.getString(with: .comma))")
+                        .foregroundColor(JobApplicationModel.Status.applied.color)
+                }
+                .opacity(.opacityMedium)
+                .font(.subheadline)
             }
+            .lineLimit(1)
         }
     }
 }

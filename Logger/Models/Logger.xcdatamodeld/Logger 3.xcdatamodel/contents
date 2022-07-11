@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21223.12" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="JobApplication" representedClassName="JobApplication" syncable="YES" codeGenerationType="class">
+        <attribute name="companyName" optional="YES" attributeType="String"/>
+        <attribute name="dateApplied" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateModified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="interviewDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="jobLink" optional="YES" attributeType="String"/>
+        <attribute name="jobTitle" optional="YES" attributeType="String"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="recruitingCompany" optional="YES" attributeType="String"/>
+        <attribute name="salary" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <relationship name="contacts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="JobContact" inverseName="jobApplication" inverseEntity="JobContact"/>
+    </entity>
+    <entity name="JobContact" representedClassName="JobContact" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
+        <attribute name="role" optional="YES" attributeType="String"/>
+        <relationship name="jobApplication" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobApplication" inverseName="contacts" inverseEntity="JobApplication"/>
+    </entity>
+    <elements>
+        <element name="JobApplication" positionX="-54" positionY="-9" width="128" height="209"/>
+        <element name="JobContact" positionX="-36" positionY="81" width="128" height="104"/>
+    </elements>
+</model>
