@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA4D6571287C962600A9D1A6 /* MyContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D6570287C962600A9D1A6 /* MyContactInfo.swift */; };
 		CA55C71B287A4F8400BF42FF /* ApplicationListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C71A287A4F8400BF42FF /* ApplicationListRowView.swift */; };
 		CA55C71D287A523500BF42FF /* ApplicationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C71C287A523500BF42FF /* ApplicationListViewModel.swift */; };
 		CA55C71F287A5C2800BF42FF /* ApplicationEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C71E287A5C2800BF42FF /* ApplicationEditorView.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA4D6570287C962600A9D1A6 /* MyContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactInfo.swift; sourceTree = "<group>"; };
 		CA55C71A287A4F8400BF42FF /* ApplicationListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationListRowView.swift; sourceTree = "<group>"; };
 		CA55C71C287A523500BF42FF /* ApplicationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationListViewModel.swift; sourceTree = "<group>"; };
 		CA55C71E287A5C2800BF42FF /* ApplicationEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationEditorView.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				CA55C725287A72A800BF42FF /* SortCategories.swift */,
 				CA55C729287B8F3000BF42FF /* UserDefaultsExtensions.swift */,
+				CA4D6570287C962600A9D1A6 /* MyContactInfo.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				CAD12FC8287A3D9200659BBC /* CoreDataManager.swift in Sources */,
 				CAD12FCA287A40EE00659BBC /* JobContactModel.swift in Sources */,
 				CA55C726287A72A800BF42FF /* SortCategories.swift in Sources */,
+				CA4D6571287C962600A9D1A6 /* MyContactInfo.swift in Sources */,
 				CAD12FC6287A39E100659BBC /* Logger.xcdatamodeld in Sources */,
 				CABFD8C0287BB821005E6CFD /* ContactEditView.swift in Sources */,
 				CA55C71D287A523500BF42FF /* ApplicationListViewModel.swift in Sources */,

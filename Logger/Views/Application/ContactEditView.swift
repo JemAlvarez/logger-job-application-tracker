@@ -1,8 +1,10 @@
 //
 
 import SwiftUI
+import JsHelper
 
 struct ContactEditView: View {
+    @Environment(\.openURL) var openURL
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: ApplicationEditorViewModel
     let contact: JobContactModel
@@ -20,20 +22,9 @@ struct ContactEditView: View {
                     .keyboardType(.namePhonePad)
                     .textContentType(.name)
 
-                HStack {
-                    TextField("Phone number", text: $number)
-                        .keyboardType(.phonePad)
-                        .textContentType(.telephoneNumber)
-
-                    Spacer()
-
-                    Button(action: {
-                        // TODO: Call
-                    }) {
-                        Image(systemName: "phone.fill")
-                            .foregroundColor(.green)
-                    }
-                }
+                TextField("Phone number", text: $number)
+                    .keyboardType(.phonePad)
+                    .textContentType(.telephoneNumber)
 
                 TextField("Contact email", text: $email)
                     .keyboardType(.emailAddress)

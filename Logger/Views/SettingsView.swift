@@ -1,9 +1,13 @@
 //
 
 import SwiftUI
+import JsHelper
 
 struct SettingsView: View {
+    @Environment(\.openURL) var openURL
     @Environment(\.dismiss) var dismiss
+
+    @State var copied = false
 
     var body: some View {
         VStack {
@@ -36,9 +40,12 @@ struct SettingsView: View {
                 donate()
             }
 
-            Text("Made with ❤️ by Jem")
-                .font(.footnote)
-                .opacity(.opacityMedium)
+            VStack {
+                Text("Made with ❤️ by Jem")
+                Text("Version: \(Bundle.main.appBuild)")
+            }
+            .font(.footnote)
+            .opacity(.opacityMedium)
         }
         .padding(.top)
     }
@@ -83,16 +90,20 @@ extension SettingsView {
                 text: "Follow me on twitter",
                 rightImage: "arrow.up.right"
             ) {
-                // TODO: Open twitter link
+                openLink(MyContactInfo.twitter.rawValue, with: openURL)
             }
 
             makeRow(
                 leftImage: "envelope.fill",
                 color: .green,
                 text: "Send me an email",
-                rightImage: "arrow.up.right"
+                rightImage: copied ? "checkmark" : "doc.on.clipboard.fill"
             ) {
-                // TODO: Send email
+                UIPasteboard.general.string = MyContactInfo.email.rawValue
+
+                withAnimation {
+                    copied = true
+                }
             }
 
             makeRow(
@@ -101,7 +112,7 @@ extension SettingsView {
                 text: "Review on the App Store",
                 rightImage: "arrow.up.right"
             ) {
-                // TODO: Review on App Store
+                openLink(String.rateOnAppStoreLink(with: MyContactInfo.appId.rawValue), with: openURL)
             }
         }
     }

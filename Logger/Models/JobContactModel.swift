@@ -16,7 +16,7 @@ struct JobContactModel: Identifiable {
         email: "",
         name: "",
         number: "",
-        role: .none
+        role: .other
     )
 
     enum Role: String, CaseIterable {
