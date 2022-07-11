@@ -33,7 +33,7 @@ class ApplicationEditorViewModel: ObservableObject {
     @Published var notes = ""
 
     func populateInfo() {
-        if let application {
+        if let application = application {
             status = application.status
             date = application.dateApplied
             companyName = application.companyName

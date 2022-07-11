@@ -10,7 +10,7 @@ class CoreDataManager: ObservableObject {
 
     init() {
         container.loadPersistentStores { des, err in
-            if let err {
+            if let err = err {
                 print("Core Data failed to load")
                 print(err.localizedDescription)
             }
@@ -122,7 +122,7 @@ class CoreDataManager: ObservableObject {
                         return false
                     })
 
-                    if let exists {
+                    if let exists = exists {
                         if exists {
                             let _ = updateJobContact(with: contact)
                         } else {

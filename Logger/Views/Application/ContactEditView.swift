@@ -30,13 +30,20 @@ struct ContactEditView: View {
                     .keyboardType(.emailAddress)
                     .textContentType(.emailAddress)
 
-                Picker("Role", selection: $role.animation()) {
-                    ForEach(JobContactModel.Role.allCases, id: \.self.rawValue) { role in
-                        if role != .none {
-                            Text(role.rawValue.capitalized)
-                                .tag(role)
+
+                HStack {
+                    Text("Role")
+                    Spacer()
+                    Picker("", selection: $role.animation()) {
+                        ForEach(JobContactModel.Role.allCases, id: \.self.rawValue) { role in
+                            if role != .none {
+                                Text(role.rawValue.capitalized)
+                                    .tag(role)
+                            }
                         }
                     }
+                    Image(systemName: "chevron.up.chevron.down")
+                        .foregroundColor(.secondary)
                 }
             }
 
@@ -52,7 +59,7 @@ struct ContactEditView: View {
 
                     let index = viewModel.contacts.firstIndex { $0.id == id }
 
-                    if let index {
+                    if let index = index {
                         viewModel.contacts[index] = newContact
                     } else {
                         viewModel.contacts.append(newContact)

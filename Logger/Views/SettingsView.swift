@@ -80,7 +80,7 @@ extension SettingsView {
     }
 
     func purchase() async {
-        if let product {
+        if let product = product {
             do {
                 let purchaseResult = try await product.purchase()
 
@@ -104,7 +104,7 @@ extension SettingsView {
     }
 
     func restore() async {
-        if let product {
+        if let product = product {
             let entitlement = await product.currentEntitlement
 
             switch entitlement {
@@ -209,7 +209,7 @@ extension SettingsView {
 
                 Spacer()
 
-                if let rightImage {
+                if let rightImage = rightImage {
                     Image(systemName: rightImage)
                 }
             }

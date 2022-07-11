@@ -71,19 +71,24 @@ extension ApplicationEditorView {
 
     func statusSection() -> some View {
         Section("Status") {
-            Picker(selection: $viewModel.status.animation()) {
-                ForEach(JobApplicationModel.Status.allCases, id: \.self.rawValue) { status in
-                    if status != .none {
-                        Text(status.rawValue.capitalized)
-                            .tag(status)
+            HStack {
+                StatusCircleView(color: viewModel.status.color)
+
+                Text("Status of application")
+
+                Spacer()
+
+                Picker("", selection: $viewModel.status.animation()) {
+                    ForEach(JobApplicationModel.Status.allCases, id: \.self.rawValue) { status in
+                        if status != .none {
+                            Text(status.rawValue.capitalized)
+                                .tag(status)
+                        }
                     }
                 }
-            } label: {
-                HStack {
-                    Text("Status of application")
-                    Spacer()
-                    StatusCircleView(color: viewModel.status.color)
-                }
+
+                Image(systemName: "chevron.up.chevron.down")
+                    .foregroundColor(.secondary)
             }
 
             DatePicker("Date of application", selection: $viewModel.date, displayedComponents: .date)
@@ -147,7 +152,7 @@ extension ApplicationEditorView {
             ForEach(viewModel.contacts) { contact in
                 NavigationLink(destination:
                                 ContactEditView(contact: contact)
-                                    .environmentObject(viewModel)
+                    .environmentObject(viewModel)
                 ) {
                     HStack {
                         Text(contact.name)
@@ -163,7 +168,7 @@ extension ApplicationEditorView {
 
             NavigationLink(destination:
                             ContactEditView(contact: .empty)
-                                .environmentObject(viewModel)
+                .environmentObject(viewModel)
             ) {
                 Label("Add contact", systemImage: "plus")
                     .foregroundColor(.blue)
@@ -174,16 +179,14 @@ extension ApplicationEditorView {
 
     func notes() -> some View {
         Section("Notes") {
-            ZStack {
-                TextEditor(text: $viewModel.notes)
-
-                if viewModel.notes.isEmpty {
-                    Text("Important notes ...")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 5)
-                        .padding(.top, -15)
-                        .opacity(.opacityLow)
-                        .allowsHitTesting(true)
+            NavigationLink("Notes") {
+                VStack {
+                    TextEditor(text: $viewModel.notes)
+                        .padding()
+                        .navigationTitle("Notes")
+                        .background(Color.secondary.opacity(.opacityLow))
+                        .cornerRadius(.cornerRadius)
+                        .padding()
                 }
             }
         }
@@ -200,5 +203,12 @@ extension ApplicationEditorView {
                     .foregroundColor(.red)
             }
         }
+    }
+
+    init(application: JobApplicationModel, isSheet: Bool) {
+        UITextView.appearance().backgroundColor = .clear
+
+        self.application = application
+        self.isSheet = isSheet
     }
 }
