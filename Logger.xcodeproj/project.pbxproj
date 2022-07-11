@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		CA4D6571287C962600A9D1A6 /* MyContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D6570287C962600A9D1A6 /* MyContactInfo.swift */; };
+		CA4D6574287C9CCC00A9D1A6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4D6573287C9CCC00A9D1A6 /* StoreKit.framework */; };
+		CA4D6576287CA6AC00A9D1A6 /* TransactionObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D6575287CA6AC00A9D1A6 /* TransactionObserver.swift */; };
 		CA55C71B287A4F8400BF42FF /* ApplicationListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C71A287A4F8400BF42FF /* ApplicationListRowView.swift */; };
 		CA55C71D287A523500BF42FF /* ApplicationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C71C287A523500BF42FF /* ApplicationListViewModel.swift */; };
 		CA55C71F287A5C2800BF42FF /* ApplicationEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C71E287A5C2800BF42FF /* ApplicationEditorView.swift */; };
@@ -31,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		CA4D6570287C962600A9D1A6 /* MyContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactInfo.swift; sourceTree = "<group>"; };
+		CA4D6573287C9CCC00A9D1A6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CA4D6575287CA6AC00A9D1A6 /* TransactionObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionObserver.swift; sourceTree = "<group>"; };
 		CA55C71A287A4F8400BF42FF /* ApplicationListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationListRowView.swift; sourceTree = "<group>"; };
 		CA55C71C287A523500BF42FF /* ApplicationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationListViewModel.swift; sourceTree = "<group>"; };
 		CA55C71E287A5C2800BF42FF /* ApplicationEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationEditorView.swift; sourceTree = "<group>"; };
@@ -60,12 +64,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA55C724287A6BE800BF42FF /* JsHelper in Frameworks */,
+				CA4D6574287C9CCC00A9D1A6 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA4D6572287C9CCC00A9D1A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA4D6573287C9CCC00A9D1A6 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CA55C719287A4F6400BF42FF /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +95,7 @@
 			children = (
 				CAD12FAE287A384200659BBC /* Logger */,
 				CAD12FAD287A384200659BBC /* Products */,
+				CA4D6572287C9CCC00A9D1A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,6 +166,7 @@
 				CA55C725287A72A800BF42FF /* SortCategories.swift */,
 				CA55C729287B8F3000BF42FF /* UserDefaultsExtensions.swift */,
 				CA4D6570287C962600A9D1A6 /* MyContactInfo.swift */,
+				CA4D6575287CA6AC00A9D1A6 /* TransactionObserver.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -195,7 +210,7 @@
 				};
 			};
 			buildConfigurationList = CAD12FA7287A384200659BBC /* Build configuration list for PBXProject "Logger" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -240,6 +255,7 @@
 				CA55C71B287A4F8400BF42FF /* ApplicationListRowView.swift in Sources */,
 				CAD12FB2287A384200659BBC /* MainView.swift in Sources */,
 				CAD12FB0287A384200659BBC /* LoggerApp.swift in Sources */,
+				CA4D6576287CA6AC00A9D1A6 /* TransactionObserver.swift in Sources */,
 				CA55C72C287B94BC00BF42FF /* StatusCircleView.swift in Sources */,
 				CAD12FC8287A3D9200659BBC /* CoreDataManager.swift in Sources */,
 				CAD12FCA287A40EE00659BBC /* JobContactModel.swift in Sources */,

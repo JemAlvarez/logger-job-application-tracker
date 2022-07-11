@@ -32,7 +32,7 @@ class ApplicationListViewModel: ObservableObject {
             return applications
         }
 
-        return applications.filter { $0.companyName.contains(searchQuery) }
+        return applications.filter { $0.companyName.lowercased().contains(searchQuery.lowercased()) }
     }
 
     func filter(_ applications: [JobApplicationModel]) -> [JobApplicationModel] {

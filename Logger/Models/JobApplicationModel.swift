@@ -73,7 +73,7 @@ struct JobApplicationModel: Identifiable {
                 return waiting
             case "call":
                 return call
-            case "interviewing":
+            case "interview":
                 return interview
             default:
                 return none

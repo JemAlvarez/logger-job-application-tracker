@@ -14,6 +14,8 @@ struct LoggerApp: App {
                 .environment(\.managedObjectContext, coreDataManager.container.viewContext)
                 .environmentObject(coreDataManager)
                 .onAppear {
+                    let _ = TransactionObserver()
+
                     appTimesOpenedNum += 1
 
                     switch appTimesOpenedNum {

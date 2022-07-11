@@ -2,8 +2,13 @@
 
 import SwiftUI
 import JsHelper
+import StoreKit
 
 struct SettingsView: View {
+    @AppStorage(UserDefaults.Keys.isSupporter.rawValue) var isSupporter = false
+    let iapID = "com.jemalvarez.Logger.Support"
+    @State var product: Product? = nil
+
     @Environment(\.openURL) var openURL
     @Environment(\.dismiss) var dismiss
 
@@ -48,6 +53,9 @@ struct SettingsView: View {
             .opacity(.opacityMedium)
         }
         .padding(.top)
+        .task {
+            await fetchProduct()
+        }
     }
 }
 
@@ -57,28 +65,100 @@ struct SettingsView_Previews: PreviewProvider {
     }
 }
 
+// MARK: - iap
+extension SettingsView {
+    func fetchProduct() async {
+        do {
+            let products = try await Product.products(for: [iapID])
+
+            if let fetchedProduct = products.first {
+                product = fetchedProduct
+            }
+        } catch {
+            print("Unable to fetch product")
+        }
+    }
+
+    func purchase() async {
+        if let product {
+            do {
+                let purchaseResult = try await product.purchase()
+
+                switch purchaseResult {
+                case .success(let verificationResult):
+                    switch verificationResult {
+                    case .verified:
+                        withAnimation {
+                            isSupporter = true
+                        }
+                    default:
+                        break
+                    }
+                default:
+                    break
+                }
+            } catch {
+                print("Error pruchasing")
+            }
+        }
+    }
+
+    func restore() async {
+        if let product {
+            let entitlement = await product.currentEntitlement
+
+            switch entitlement {
+            case .verified:
+                withAnimation {
+                    isSupporter = true
+                }
+            default:
+                break
+            }
+        }
+    }
+}
+
+// MARK: - views
 extension SettingsView {
     func donate() -> some View {
         Section(content: {
-            HStack {
-                makeRow(
-                    leftImage: "heart.fill",
-                    color: .red,
-                    text: "Donate and support",
-                    rightImage: nil
-                ) {
-                    // TODO: Process IAP
+            if !isSupporter {
+                HStack {
+                    makeRow(
+                        leftImage: "heart.fill",
+                        color: .red,
+                        text: "Donate and support",
+                        rightImage: nil
+                    ) {
+                        Task {
+                            await purchase()
+                        }
+                    }
+
+                    Spacer()
+
+                    Text("$0.99")
+                        .foregroundColor(.blue)
                 }
 
-                Spacer()
-
-                Text("$0.99")
-                    .foregroundColor(.blue)
+                Button("Restore") {
+                    Task {
+                        await restore()
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
+            } else {
+                HStack {
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(.red)
+                    Text("Thanks for your support! :)")
+                }
             }
         }) {
             Text("Support")
         } footer: {
-            Text("If you choose to donate you'll be supporting me and only me :)")
+            Text(isSupporter ? "You're awesome :)" : "If you choose to donate you'll be supporting me and only me :)")
         }
     }
 
